@@ -1,0 +1,117 @@
+<div class="app-body">
+    <main class="main d-flex align-items-center">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6 mx-auto">
+            <div class="card mx-4">
+              <div class="card-body p-4">
+                <form [formGroup]="registerForm" (submit)="register()">
+                  <h1>Register</h1>
+                  <p class="text-muted">Create your account</p>
+
+                  <div class="form-group input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="icon-user"></i></span>
+                    </div>
+                    <input type="text" class="form-control" placeholder="FirstName" autocomplete="firstName" formControlName="firstName" required [ngClass]="{'is-valid': submitted && !registerForm.controls.firstName.errors ,'is-invalid': submitted && registerForm.controls.firstName.errors}">
+                    <div class="invalid-feedback d-block" *ngIf="submitted && registerForm.controls.firstName.hasError('required')">First Name Required!!! 
+                     </div>
+                    </div>
+                    <div class="form-group input-group mb-3">
+                     <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="icon-user"></i></span>
+                      </div>
+                    <input type="text" class="form-control" placeholder="LastName" autocomplete="lastName" formControlName="lastName" required [ngClass]="{'is-valid': submitted && !registerForm.controls.lastName.errors ,'is-invalid': submitted && registerForm.controls.lastName.errors}">
+                    <div class="invalid-feedback d-block" *ngIf="submitted && registerForm.controls.lastName.hasError('required')">Last Name Required!!! 
+                                    </div>
+                  </div>
+
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="icon-plane"></i></span>
+                    </div>
+                    <select id="base" class="form-control" name="base" formControlName="base" [ngClass]="{'is-valid': submitted && !registerForm.controls.base.errors ,'is-invalid': submitted && registerForm.controls.base.errors}">
+                        <div class="invalid-feedback d-block" *ngIf="submitted && registerForm.controls.base.hasError('required')">Base Not Selected!!! 
+                                        </div>>
+                        <option value="">Sélectionner une base</option>
+                        <option value="BAEA">BAEA</option>
+                        <option value="BASA">BASA</option>
+                         <option value="BAK">BAK</option>
+                        <option value="BAJK">BAJK</option>
+                        <option value="BAS">BAS</option>
+                        <option value="BAGF">BAGF</option>
+                        <option value="BAG">BAG</option>
+                        <option value="BAR">BAR</option>
+                        <option value="EABA">EABA</option>
+                    </select>
+                    </div>
+
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text"><i class="icon-options"></i></span>
+                        </div>
+                        <select id="fonction" class="form-control" name="fonction" formControlName="fonction" [ngClass]="{'is-valid': submitted && !registerForm.controls.fonction.errors ,'is-invalid': submitted && registerForm.controls.fonction.errors}">
+                            <div class="invalid-feedback d-block" *ngIf="submitted && registerForm.controls.fonction.hasError('required')">Function Not Selected!!! 
+                                            </div>
+                            <option value="">Sélectionner une fonction</option>
+                            <option value="BAEA">Chef STIB</option>
+                            <option value="BAEA">Officier Informatique</option>
+                            <option value="BASA">Officier Transmission</option>
+                            <option value="BASA">Officier Securité Informatique</option>
+                         </select>
+                        </div>
+
+
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="icon-user"></i></span>
+                    </div>
+                    <input type="text" class="form-control" placeholder="Username" autocomplete="username" formControlName="userName" required [ngClass]="{'is-valid': submitted && !registerForm.controls.userName.errors ,'is-invalid': submitted && registerForm.controls.userName.errors}">
+                    <div class="invalid-feedback d-block" *ngIf="submitted && registerForm.controls.userName.hasError('required')">User Name Required!!! 
+                                    </div>
+                  </div>
+                 
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">@</span>
+                    </div>
+                    <input type="text" class="form-control" placeholder="Email" autocomplete="email" formControlName="email" required [ngClass]="{'is-valid': submitted && !registerForm.controls.email.errors ,'is-invalid': submitted && registerForm.controls.email.errors}">
+                    <div class="invalid-feedback d-block" *ngIf="submitted && registerForm.controls.email.hasError('required')">Email Required!!! 
+                                    </div>
+                  </div>
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="icon-lock"></i></span>
+                    </div>
+                    <input type="password" class="form-control" placeholder="Password" autocomplete="new-password" formControlName="password" required [ngClass]="{'is-valid': submitted && !registerForm.controls.password.errors ,'is-invalid': submitted && registerForm.controls.password.errors}">
+                    <div class="invalid-feedback d-block" *ngIf="submitted && registerForm.controls.password.hasError('required')">Password Required!!! 
+                                    </div>
+                  </div>
+                  <div class="input-group mb-4">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="icon-lock"></i></span>
+                    </div>
+                    <input type="password" class="form-control" placeholder="Repeat password" autocomplete="new-password"  formControlName="rPassword" required [ngClass]="{'is-valid': submitted && !registerForm.controls.rPassword.errors ,'is-invalid': submitted && registerForm.controls.rPassword.errors}">
+                    <div class="invalid-feedback d-block" *ngIf="submitted && registerForm.controls.rPassword.hasError('required')">Pleas Confirm Password!!! 
+                                    </div>
+                  </div>
+                  <button type="submit" class="btn btn-block btn-success">Create Account</button>
+                </form>
+              </div>
+              <div class="card-footer p-4">
+                <div class="row">
+                  <div class="col-6">
+                    <button class="btn btn-block btn-facebook" type="button"><span>facebook</span></button>
+                  </div>
+                  <div class="col-6">
+                    <button class="btn btn-block btn-twitter" type="button"><span>twitter</span></button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+  
