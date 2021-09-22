@@ -10,6 +10,7 @@ import { P500Component } from './views/error/500.component';
 //import { RegisterComponent } from './views/register/register.component';
 import {LoginComponent} from './login/login.component';
 import {RegisterComponent} from './register/register.component';
+import {ForgotPasswordComponent} from './forgot-password/forgot-password.component';
 export const routes: Routes = [
   {
     path: '',
@@ -42,6 +43,13 @@ export const routes: Routes = [
     component: RegisterComponent,
     data: {
       title: 'Register Page'
+    }
+  },
+  {
+    path: 'forgotPassword',
+    component: ForgotPasswordComponent,
+    data: {
+      title: 'ForgotPassword Page'
     }
   },
   {
