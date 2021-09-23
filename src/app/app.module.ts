@@ -15,6 +15,7 @@ import { P500Component } from './views/error/500.component';
 import { LoginComponent } from './login/login.component';
 import {RegisterComponent} from './register/register.component';
 import {ForgotPasswordComponent} from './forgot-password/forgot-password.component';
+import {ResetPasswordComponent} from './reset-password/reset-password.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {
   AppAsideModule,
@@ -49,7 +50,8 @@ import { ToasterModule, ToasterService } from 'angular2-toaster';
     ChartsModule,
     ToasterModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    
   ],
   declarations: [
     AppComponent,
@@ -58,7 +60,8 @@ import { ToasterModule, ToasterService } from 'angular2-toaster';
     P500Component,
     LoginComponent,
     RegisterComponent,
-    ForgotPasswordComponent
+    ForgotPasswordComponent,
+    ResetPasswordComponent
   ],
   providers: [{
     provide: LocationStrategy,
