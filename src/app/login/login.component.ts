@@ -12,7 +12,7 @@ export class LoginComponent implements OnInit {
   submitted: boolean = false;
   loginForm = new FormGroup({
     email: new FormControl('', Validators.required),
-    password: new FormControl(''),
+    password: new FormControl('',Validators.required),
 
   })
   constructor(private toasterService: ToasterService,
