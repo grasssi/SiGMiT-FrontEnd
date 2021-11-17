@@ -134,7 +134,6 @@ export class AddMaterielComponent implements OnInit {
   findmarques() {
     this.marqueservice.findMarques(this.matForm.value.type).subscribe((response: any) => {
       this.myfindMarques = response
-      console.log(this.myfindMarques);
 
     },
       (error: any) => {
@@ -160,8 +159,12 @@ export class AddMaterielComponent implements OnInit {
       return
     };
     //with Services
-    console.log('tetstsst=', this.matForm.value);
+    console.log(this.matForm.value.type);
+if (this.matForm.value.type != "617851db5ff14e633aeff1e0"){
+  this.matForm.value.ram = null
+  this.matForm.value.systeme = null
 
+}
     const addowner = this.infoservice.addmatInfo(this.matForm.value).subscribe((response: any) => {
       this.toasterService.pop('success', 'Success Login', response.message);
       // this.affectService(this.matForm.value)

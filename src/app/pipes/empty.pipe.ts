@@ -6,13 +6,11 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class EmptyPipe implements PipeTransform {
 
   transform(value: any, ...args: unknown[]): any {
-    console.log(value);
-    
-    if (value==null){
+    if (value == null) {
       return "غير متوفر";
-    }else
-    return value;
-    
+    } else
+      return value;
+
   }
 
 }

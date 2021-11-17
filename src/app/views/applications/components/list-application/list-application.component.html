@@ -18,7 +18,7 @@
         #mf="mfDataTable" [mfRowsOnPage]="10">
         <thead>
           <tr>
-                       <th style="width: 10%">
+            <th style="width: 10%">
               <mfDefaultSorter by="Service">المستفيد</mfDefaultSorter>
             </th>
             <th style="width: 10%">
@@ -40,20 +40,15 @@
         </thead>
         <tbody>
           <tr *ngFor="let item of mf.data">
-            <td>{{item.type.type}}</td>
-            <td class="text-left">{{item.Marque.marque}}</td>
-            <td>{{item.SerialNumber}}</td>
+            <td>{{item.service.nomService}}</td>
+            <td class="text-left">{{item.application.application}}</td>
             <td>
               <label [ngClass]="{'badge badge-success': item.situation === 'عملياتي',
              'badge badge-secondary': item.situation === 'مخزون',
              'badge badge-danger': item.situation === 'غير عملياتي'}">{{item.situation}}</label>
             </td>
-            <td>{{item.ram?.capacite}}</td>
-            <td>{{item.systeme?.systeme}}</td>
-            <td>{{item.service?.nomService}}</td>
-            <td>{{item.owner?.firstName}} {{item.owner?.lastName}}</td>
-            <td>{{item.domaine}}</td>
-            <td>{{item.application?.application}}</td>
+            <td></td>
+            <td></td>
             <td>
               <button type="button" [routerLink]="['/owners/update',item._id]" class="btn btn-info"><i
                   class="fa fa-refresh fa-lgs"></i>
