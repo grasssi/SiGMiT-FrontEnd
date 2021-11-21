@@ -66,10 +66,7 @@ import { SharedModule } from './views/shared/shared.module';
     LoginComponent,
     RegisterComponent,
     ResetpasswordComponent,
-    ChangepasswordComponent,
-
-
-
+    ChangepasswordComponent
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,

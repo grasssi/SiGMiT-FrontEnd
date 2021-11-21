@@ -26,6 +26,17 @@ export class ApplicationService {
       catchError(this.handleError)
     )
   }
+
+  globalList() {
+      const res = this.httpClient.get<TableData>(`${this.baseUrl}/allcountminfos`).pipe(
+      retry(3), // retry a failed request up to 3 times
+      catchError(this.handleError)
+    )
+console.log(res);
+
+    return res;
+  }
+  
   private handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {
       // A client-side or network error occurred. Handle it accordingly.
