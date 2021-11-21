@@ -7,6 +7,7 @@ import { AddApplicationComponent } from './components/add-application/add-applic
 import { ListApplicationComponent } from './components/list-application/list-application.component';
 import { UpdateApplicationComponent } from './components/update-application/update-application.component';
 import { SharedModule } from '../shared/shared.module';
+import { GlobalListComponent } from './components/global-list/global-list.component';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import { SharedModule } from '../shared/shared.module';
     ApplicationsComponent,
     AddApplicationComponent,
     ListApplicationComponent,
-    UpdateApplicationComponent
+    UpdateApplicationComponent,
+    GlobalListComponent
   ],
   imports: [
     CommonModule,

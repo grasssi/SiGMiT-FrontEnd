@@ -1,28 +1,30 @@
 import { Component, OnInit } from '@angular/core';
-import { ApplicationService } from '../../../../services/application.service';
-import { TableData } from '../../../../services/application.service';
+import { ApplicationService, TableData } from '../../../../services/application.service';
+
 @Component({
-  selector: 'app-list-application',
-  templateUrl: './list-application.component.html',
-  styleUrls: ['./list-application.component.css']
+  selector: 'app-global-list',
+  templateUrl: './global-list.component.html',
+  styleUrls: ['./global-list.component.css']
 })
-export class ListApplicationComponent implements OnInit {
+export class GlobalListComponent implements OnInit {
+
   public filterQuery = '';
   error: any;
   public data: TableData;
   constructor(private appService: ApplicationService) {}
 
   ngOnInit(): void {
-    const res=this.appService.allApplication().subscribe(
+    const res=this.appService.globalList().subscribe(
         (data: TableData) => {
           setTimeout(() => {
             this.data = [...data];
+            console.log(this.data);
           }, 1000);
         }, // success path
         
         error => this.error = error // error path
-
-      );
+        
+        );
 
   }
 

@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ApplicationsComponent } from './applications.component';
 import { AddApplicationComponent } from './components/add-application/add-application.component';
+import { GlobalListComponent } from './components/global-list/global-list.component';
 import { ListApplicationComponent } from './components/list-application/list-application.component';
 import { UpdateApplicationComponent } from './components/update-application/update-application.component';
 
@@ -21,6 +22,10 @@ const routes: Routes = [
   {
     path: 'updateapplication\:id',
   component: UpdateApplicationComponent
+  },
+  {
+    path: 'listglobal',
+  component: GlobalListComponent
   },
   ];
 
