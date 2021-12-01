@@ -64,5 +64,17 @@ export class InformatiqueService {
     return this.httpClient.put(`${this.baseUrl}/updateapplication/${id}`, body)
 
   }
+
+
+  globalList() {
+    const res = this.httpClient.get<TableData>(`${this.baseUrl}/allcountminfos`).pipe(
+      retry(3), // retry a failed request up to 3 times
+      catchError(this.handleError)
+    )
+    console.log(res);
+
+    return res;
+  }
+
 }
 
