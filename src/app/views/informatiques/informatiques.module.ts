@@ -6,7 +6,7 @@ import { InformatiquesComponent } from './informatiques.component';
 import { ListeMaterielComponent } from './components/liste-materiel/liste-materiel.component';
 import { SharedModule } from '../shared/shared.module';
 import { AddMaterielComponent } from './components/add-materiel/add-materiel.component';
-import { ListGlobalComponent } from './components/list-global/list-global.component';
+import { GlobalListComponent } from './components/global-list/global-list.component';
 
 
 @NgModule({
@@ -14,8 +14,7 @@ import { ListGlobalComponent } from './components/list-global/list-global.compon
     InformatiquesComponent,
     ListeMaterielComponent,
     AddMaterielComponent,
-    ListGlobalComponent,
-
+    GlobalListComponent,
   ],
   imports: [
     CommonModule,

@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AddMaterielComponent } from './components/add-materiel/add-materiel.component';
-import { ListGlobalComponent } from './components/list-global/list-global.component';
+import { GlobalListComponent } from './components/global-list/global-list.component';
 import { ListeMaterielComponent } from './components/liste-materiel/liste-materiel.component';
 import { InformatiquesComponent } from './informatiques.component';
 
@@ -20,7 +20,7 @@ const routes: Routes = [
   },
   {
     path: 'listglobal',
-    component: ListGlobalComponent
+    component: GlobalListComponent
   }
 ];
 
