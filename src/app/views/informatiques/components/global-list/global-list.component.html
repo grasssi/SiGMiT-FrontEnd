@@ -41,11 +41,11 @@
           <tbody>
             <tr *ngFor="let item of mf.data">
               <td>{{item.type}}</td>
-              <td class="text-left">{{item?.مخزون}}</td>
-              <td>
-                <label >{{item?.عملياتي}}</label>
-              </td>
-              <td></td>
+              <td>{{item.sum}}</td>
+              <td><label >{{item['عملياتي']}}</label></td>
+              <td>{{item['تصليح']}}</td>
+              <td>{{item['مخزون']}}</td>
+              <td>{{item['غير عملياتي']}}</td>
               <td></td>
               <td>
                 <button type="button" [routerLink]="['/owners/update',item._id]" class="btn btn-info"><i
