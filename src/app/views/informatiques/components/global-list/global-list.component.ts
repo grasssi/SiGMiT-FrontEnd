@@ -11,20 +11,20 @@ export class GlobalListComponent implements OnInit {
   public filterQuery = '';
   error: any;
   public data: TableData;
-  constructor(private appService: InformatiqueService) {}
+  constructor(private appService: InformatiqueService) { }
 
   ngOnInit(): void {
-    const res=this.appService.globalList().subscribe(
-        (data: TableData) => {
-          setTimeout(() => {
-            this.data = [...data];
-            console.log(this.data);
-          }, 1000);
-        }, // success path
-        
-        error => this.error = error // error path
-        
-        );
+    const res = this.appService.globalList().subscribe(
+      (data: TableData) => {
+        setTimeout(() => {
+          this.data = [...data];
+        }, 1000);
+         console.log('res',res);
+      }, // success path
+
+      error => this.error = error // error path
+
+    );
 
   }
 

@@ -71,8 +71,6 @@ export class InformatiqueService {
       retry(3), // retry a failed request up to 3 times
       catchError(this.handleError)
     )
-    console.log(res);
-
     return res;
   }
 
