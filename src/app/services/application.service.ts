@@ -21,7 +21,7 @@ export class ApplicationService {
 
   constructor(private httpClient: HttpClient) { }
   allApplication() {
-    return this.httpClient.get<TableData>(`${this.baseUrl}/allapplication`).pipe(
+    return this.httpClient.get<TableData>(`${this.baseUrl}/allapplications`).pipe(
       retry(3), // retry a failed request up to 3 times
       catchError(this.handleError)
     )

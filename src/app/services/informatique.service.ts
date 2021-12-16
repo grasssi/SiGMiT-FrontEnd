@@ -14,8 +14,10 @@ export interface InfoData {
   ram: string,
   systeme: string,
   domaine: string,
-  application: string,
+  application: number,
   situation: string
+  bureautique: number
+  nomService:string
 }
 export interface TableData extends Array<InfoData> { }
 
@@ -71,6 +73,12 @@ export class InformatiqueService {
       retry(3), // retry a failed request up to 3 times
       catchError(this.handleError)
     )
+    console.log('rassi',res);
+    
+    return res;
+  }
+  listparservice(){
+    const res = this.httpClient.get<TableData>(`${this.baseUrl}/allminfosbyservice`).map(result=>result)
     return res;
   }
 

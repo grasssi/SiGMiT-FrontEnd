@@ -36,7 +36,7 @@ export const navItems: NavData[] = [
     icon: 'icon-speedometer',
     badge: {
       variant: 'info',
-      text: 'NEW'
+      text: 'عتاد'
     }
   },
   {
@@ -47,17 +47,31 @@ export const navItems: NavData[] = [
     name: 'عتاد إعلامية',
     url: '/informatiques',
     icon: 'icon-puzzle',
+    divider: false,
+    badge: {
+      variant: 'info',
+      text: 'NEW'
+    },
     children: [
       {
         name: 'قائمة شاملة',
         url: '/informatiques/listmateriels',
-        icon: 'icon-puzzle'
+        icon: 'icon-puzzle',
+        class:'small'
+
       },
       {
-        name: 'إضافة عتاد',
-        url: '/informatiques/addmateriel',
-        icon: 'icon-puzzle'
+        name: ' قائمة شاملة حسب التقرير الشهري',
+        url: '/informatiques/listglobal',
+        icon: 'icon-puzzle',
+        class:'small'
       },
+      {
+        name: 'عتاد الإعلامية حسب الهياكل',
+        url: '/informatiques/listparservice',
+        icon: 'icon-puzzle',
+        class:'small'
+      }
     ]
   },
   {
@@ -90,7 +104,7 @@ export const navItems: NavData[] = [
         name: 'قائمة شاملة',
         url: '/applications/listapplications',
         icon: 'icon-puzzle'
-      },
+      },      
       {
         name: 'إضافة منظومة',
         url: '/applications/addapplication',

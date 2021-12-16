@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AddMaterielComponent } from './components/add-materiel/add-materiel.component';
 import { GlobalListComponent } from './components/global-list/global-list.component';
+import { ListParServiceComponent } from './components/list-par-service/list-par-service.component';
 import { ListeMaterielComponent } from './components/liste-materiel/liste-materiel.component';
 import { InformatiquesComponent } from './informatiques.component';
 
@@ -21,6 +22,10 @@ const routes: Routes = [
   {
     path: 'listglobal',
     component: GlobalListComponent
+  },
+  {
+    path: 'listparservice',
+    component: ListParServiceComponent
   }
 ];
 

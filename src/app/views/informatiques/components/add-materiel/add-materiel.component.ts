@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 import { ToasterService } from 'angular2-toaster';
 import { ApplicationService } from '../../../../services/application.service';
 import { InformatiqueService } from '../../../../services/informatique.service';
@@ -11,6 +12,7 @@ import { ServiceService } from '../../../../services/service.service';
 import { SystemeService } from '../../../../services/systeme.service';
 import { TypesService } from '../../../../services/types.service';
 import { ValidationFormsService } from '../../../forms/validation-forms/validation-forms.service';
+
 
 @Component({
   selector: 'app-add-materiel',
@@ -29,6 +31,8 @@ export class AddMaterielComponent implements OnInit {
   mySysteme: any;
   myfindMarques: any;
   myOwners: any;
+  model: NgbDateStruct;
+
   matForm = new FormGroup({
     type: new FormControl(),
     Marque: new FormControl(),
@@ -40,6 +44,7 @@ export class AddMaterielComponent implements OnInit {
     domaine: new FormControl(),
     application: new FormControl(),
     situation: new FormControl(),
+    date: new FormControl(),
     accept: new FormControl(false, Validators.requiredTrue)
   });
 
@@ -160,11 +165,11 @@ export class AddMaterielComponent implements OnInit {
     };
     //with Services
     console.log(this.matForm.value.type);
-if (this.matForm.value.type != "617851db5ff14e633aeff1e0"){
-  this.matForm.value.ram = null
-  this.matForm.value.systeme = null
+    if (this.matForm.value.type != "617851db5ff14e633aeff1e0") {
+      this.matForm.value.ram = null
+      this.matForm.value.systeme = null
 
-}
+    }
     const addowner = this.infoservice.addmatInfo(this.matForm.value).subscribe((response: any) => {
       this.toasterService.pop('success', 'Success Login', response.message);
       // this.affectService(this.matForm.value)
