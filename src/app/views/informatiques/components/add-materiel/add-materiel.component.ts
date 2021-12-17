@@ -45,6 +45,7 @@ export class AddMaterielComponent implements OnInit {
     application: new FormControl(),
     situation: new FormControl(),
     date: new FormControl(),
+    place: new FormControl(),
     accept: new FormControl(false, Validators.requiredTrue)
   });
 

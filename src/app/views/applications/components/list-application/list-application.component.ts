@@ -17,6 +17,8 @@ export class ListApplicationComponent implements OnInit {
         (data: TableData) => {
           setTimeout(() => {
             this.data = [...data];
+            console.log(res);
+            
           }, 1000);
         }, // success path
         

@@ -63,6 +63,7 @@ export class UpdateMaterielComponent implements OnInit {
       application: new FormControl(),
       situation: new FormControl(),
       date: new FormControl(),
+      place: new FormControl(),
       accept: new FormControl(false, Validators.requiredTrue)
     });
     this.id = this.activatetRoute.snapshot.params.id;
@@ -174,15 +175,12 @@ export class UpdateMaterielComponent implements OnInit {
   findmarques() {
     this.marqueservice.findMarques(this.matForm.value.type).subscribe((response: any) => {
       this.myfindMarques = response
-      
-
     },
       (error: any) => {
         console.log(error);
       }
     );
   }
-
   //get all owners
   allowners() {
     this.ownerservice.allowners().subscribe((response: any) => {

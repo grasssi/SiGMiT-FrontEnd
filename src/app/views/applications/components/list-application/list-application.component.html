@@ -41,7 +41,7 @@
         <tbody>
           <tr *ngFor="let item of mf.data">
             <td>{{item.service?.nomService}}</td>
-            <td class="text-left">{{item.application.application}}</td>
+            <td class="text-left">{{item.application}}</td>
             <td>
               <label [ngClass]="{'badge badge-success': item.situation === 'عملياتي',
              'badge badge-secondary': item.situation === 'مخزون',
