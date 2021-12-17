@@ -8,6 +8,7 @@ import { SharedModule } from '../shared/shared.module';
 import { AddMaterielComponent } from './components/add-materiel/add-materiel.component';
 import { GlobalListComponent } from './components/global-list/global-list.component';
 import { ListParServiceComponent } from './components/list-par-service/list-par-service.component';
+import { UpdateMaterielComponent } from './components/update-materiel/update-materiel.component';
 
 
 @NgModule({
@@ -17,6 +18,7 @@ import { ListParServiceComponent } from './components/list-par-service/list-par-
     AddMaterielComponent,
     GlobalListComponent,
     ListParServiceComponent,
+    UpdateMaterielComponent,
 
   ],
   imports: [

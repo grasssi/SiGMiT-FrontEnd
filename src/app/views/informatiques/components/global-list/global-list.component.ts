@@ -7,12 +7,12 @@ import { InformatiqueService, TableData } from '../../../../services/informatiqu
   styleUrls: ['./global-list.component.css']
 })
 export class GlobalListComponent implements OnInit {
-    
+
   public barChartLabels: string[]
   public barChartType = 'bar';
   public barChartLegend = true;
   public barChartData: any[];
- public barChartOptions: any;
+  public barChartOptions: any;
   public filterQuery = '';
   chartReady = false
   error: any;
@@ -56,22 +56,6 @@ export class GlobalListComponent implements OnInit {
           { data: application, label: 'منظومات' },
           { data: bureautique, label: 'مكتبية' }
         ];
-        // this.chart = new Chart('canvas', {
-        //   type: 'bar',
-        //   data: {
-        //     labels: services,
-        //     datasets: [
-        //       {
-        //         data: application,
-        //         label: 'Series A'
-        //       },
-        //       {
-        //         data: bureautique, 
-        //         label: 'Series B'
-        //       }
-        //     ]
-        //   }
-        // })
       });
 
   }

@@ -7,7 +7,13 @@ import { InformatiqueService, TableData } from '../../../../services/informatiqu
   styleUrls: ['./list-par-service.component.css']
 })
 export class ListParServiceComponent implements OnInit {
+  public barChartLabels: string[]
+  public barChartType = 'bar';
+  public barChartLegend = true;
+  public barChartData: any[];
+  public barChartOptions: any;
   public filterQuery = '';
+  chartReady = false
   error: any;
   public data: TableData;
   constructor(private appService: InformatiqueService) { }
@@ -24,6 +30,31 @@ export class ListParServiceComponent implements OnInit {
       error => this.error = error // error path
 
     );
+    this.appService.listparservice().subscribe(
+      res => {
+        this.chartReady = true;
+        let services = res.map(res => res.service)
+        let application = res.map(res => res.application)
+        let bureautique = res.map(res => res.bureautique)
+        console.log('grosso', res);
+        console.log('services', services);
+        console.log('application', application);
+        console.log('bureautique', bureautique);
+
+        this.barChartOptions = {
+          scaleShowVerticalLines: false,
+          responsive: true,
+        };
+
+        this.barChartLabels = services;
+        this.barChartType = 'bar';
+        this.barChartLegend = true;
+
+        this.barChartData = [
+          { data: application, label: 'منظومات' },
+          { data: bureautique, label: 'مكتبية' }
+        ];
+      });
 
   }
 

@@ -4,6 +4,7 @@ import { AddMaterielComponent } from './components/add-materiel/add-materiel.com
 import { GlobalListComponent } from './components/global-list/global-list.component';
 import { ListParServiceComponent } from './components/list-par-service/list-par-service.component';
 import { ListeMaterielComponent } from './components/liste-materiel/liste-materiel.component';
+import { UpdateMaterielComponent } from './components/update-materiel/update-materiel.component';
 import { InformatiquesComponent } from './informatiques.component';
 
 const routes: Routes = [
@@ -26,6 +27,10 @@ const routes: Routes = [
   {
     path: 'listparservice',
     component: ListParServiceComponent
+  },
+  {
+    path: 'updatemateriel/:id',
+    component: UpdateMaterielComponent
   }
 ];
 

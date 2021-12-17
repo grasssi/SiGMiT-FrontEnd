@@ -62,11 +62,21 @@ export class InformatiqueService {
     return this.httpClient.get(`${this.baseUrl}/getapplication/${id}`)
   }
 
+  //get materiel by id
+  getMinfo(id: any) {
+    return this.httpClient.get(`${this.baseUrl}/getminfo/${id}`)
+  }
+
+  //update materiel by id
+  updateMinfo(id: any, body: any) {
+    return this.httpClient.put(`${this.baseUrl}/updateminfo/${id}`, body)
+
+  }
+  
   updateApplication(id: any, body: any) {
     return this.httpClient.put(`${this.baseUrl}/updateapplication/${id}`, body)
 
   }
-
 
   globalList() {
     const res = this.httpClient.get<TableData>(`${this.baseUrl}/allcountminfos`).pipe(
