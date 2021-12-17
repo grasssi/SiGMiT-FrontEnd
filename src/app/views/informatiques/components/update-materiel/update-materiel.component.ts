@@ -86,7 +86,7 @@ export class UpdateMaterielComponent implements OnInit {
     }
     //with services
     this.infoservice.updateMinfo(this.id, this.matForm.value).subscribe((response) => {
-      this.router.navigate(['listmateriels'])
+      this.router.navigate(['informatiques/listmateriels'])
     },
       (error) => {
         console.log(error);
@@ -95,12 +95,10 @@ export class UpdateMaterielComponent implements OnInit {
 
   }
 
-
   onReset() {
 
     this.submitted = false;
     this.matForm.reset();
-
   }
 
   onSubmit() {
@@ -109,7 +107,6 @@ export class UpdateMaterielComponent implements OnInit {
     if (this.matForm.invalid) {
       return;
     }
-
   }
   
   //get all services
