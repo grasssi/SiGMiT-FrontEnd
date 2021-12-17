@@ -68,60 +68,29 @@
         #mf="mfDataTable" [mfRowsOnPage]="10">
         <thead style="text-align: center">
           <tr>
-            <th class="border " rowspan="2" style="width: 10%">
-              <mfDefaultSorter by="FirstName">العتاد</mfDefaultSorter>
-            </th>
-            <th class="border" rowspan="2" style="width: 10%">
-              <mfDefaultSorter by="LastName">الرصيد</mfDefaultSorter>
-            </th>
-            <th class="border" rowspan="2" style="width: 10%">
-              المستعمل
-            </th>
-            <th class="border" colspan="3" scope="colgroup">
-              <mfDefaultSorter by="LastName">مخزون</mfDefaultSorter>
-            </th>
-            <th class="border" colspan="3" scope="colgroup">
-              <mfDefaultSorter by="LastName">التصليح</mfDefaultSorter>
-            </th>
-            <th class="border" rowspan="2" scope="colgroup">
-              <mfDefaultSorter by="LastName">الملاحظات</mfDefaultSorter>
-            </th>
-          </tr>
-          <tr>
-            <th class="border" style="width: 10%">
-              <mfDefaultSorter by="Service">عملياتي</mfDefaultSorter>
+            <th class="border " style="width: 10%">
+              <mfDefaultSorter by="FirstName">الهياكل</mfDefaultSorter>
             </th>
             <th class="border" style="width: 10%">
-              <mfDefaultSorter by="email">غير عملياتي</mfDefaultSorter>
+              <mfDefaultSorter by="LastName">عدد الحواسيب</mfDefaultSorter>
             </th>
             <th class="border" style="width: 10%">
-              <mfDefaultSorter by="email">في إنتظار الإحالة على الصرف</mfDefaultSorter>
+              نوع الإستغلال
             </th>
-            <th class="border" style="width: 10%">
-              <mfDefaultSorter by="Service">الكمية</mfDefaultSorter>
+            <th class="border" scope="colgroup">
+              <mfDefaultSorter by="LastName">عدد الطابعات</mfDefaultSorter>
             </th>
-            <th class="border" style="width: 10%">
-              <mfDefaultSorter by="Service">المكان</mfDefaultSorter>
+            <th class="border" scope="colgroup">
+              <mfDefaultSorter by="LastName">عدد المموجات</mfDefaultSorter>
             </th>
-            <th class="border" style="width: 10%">
-              <mfDefaultSorter by="Service">تاريخ الإيداع</mfDefaultSorter>
-            </th>
-
-
-          </tr>
         </thead>
         <tbody class="border" style="text-align: center">
           <tr *ngFor="let item of mf.data | dataFilter : filterQuery">
-            <td>{{item.type | empty}}</td>
+            <td>{{item.service | empty}}</td>
             <td>{{item.sum }}</td>
             <td>{{item.Operationnel | empty }}</td>
             <td>{{item.StockOperationnel | empty }}</td>
             <td>{{item.stock | empty }}</td>
-            <td>{{item.reforme | empty }}</td>
-            <td>{{item.repair | empty }}</td>
-            <td>إ ع إشر إ</td>
-            <td>{{item.date}}</td>
-            <td>{{item.comment }}</td>
           </tr>
         </tbody>
         <tfoot>
@@ -136,5 +105,19 @@
       </table>
     </div>
   </div>
-
+  <div class="row row-no-gutters">
+    <div class="col-md-2"></div>
+    <div class=" col-md-8">
+      <div class="card-header">
+        قائمة الحواسيب حسب الهياكل
+      </div>
+      <div class="card-body " *ngIf="chartReady">
+        <div class="chart-wrapper">
+          <canvas baseChart class="chart" [datasets]="barChartData" [labels]="barChartLabels"
+            [options]="barChartOptions" [legend]="barChartLegend" [chartType]="barChartType"
+            (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"></canvas>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

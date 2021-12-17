@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
-import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
-import { ToasterService } from 'angular2-toaster';
+import { FormControl, FormGroup,Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ApplicationService } from '../../../../services/application.service';
 import { InformatiqueService } from '../../../../services/informatique.service';
 import { MarquesService } from '../../../../services/marques.service';
@@ -11,18 +9,19 @@ import { RamService } from '../../../../services/ram.service';
 import { ServiceService } from '../../../../services/service.service';
 import { SystemeService } from '../../../../services/systeme.service';
 import { TypesService } from '../../../../services/types.service';
-import { ValidationFormsService } from '../../../forms/validation-forms/validation-forms.service';
-
+import { ValidationService } from '../../../../validators/validation.service';
 
 @Component({
-  selector: 'app-add-materiel',
-  templateUrl: './add-materiel.component.html',
-  styleUrls: ['./add-materiel.component.css']
+  selector: 'app-update-materiel',
+  templateUrl: './update-materiel.component.html',
+  styleUrls: ['./update-materiel.component.css']
 })
-export class AddMaterielComponent implements OnInit {
+export class UpdateMaterielComponent implements OnInit {
+  matForm: FormGroup = new FormGroup({});;
   submitted = false;
+  id: any
   formErrors: any;
-  myRes: any;
+  myRes:any; 
   myTypes: any;
   idTypes: any;
   myMarques: any;
@@ -31,25 +30,7 @@ export class AddMaterielComponent implements OnInit {
   mySysteme: any;
   myfindMarques: any;
   myOwners: any;
-  model: NgbDateStruct;
-
-  matForm = new FormGroup({
-    type: new FormControl(),
-    Marque: new FormControl(),
-    service: new FormControl(),
-    SerialNumber: new FormControl(),
-    owner: new FormControl(),
-    ram: new FormControl(),
-    systeme: new FormControl(),
-    domaine: new FormControl(),
-    application: new FormControl(),
-    situation: new FormControl(),
-    date: new FormControl(),
-    place: new FormControl(),
-    accept: new FormControl(false, Validators.requiredTrue)
-  });
-
-  constructor(private toasterService: ToasterService,
+  constructor(private activatetRoute: ActivatedRoute,
     private router: Router,
     private ownerservice: OwnerService,
     private serviceservice: ServiceService,
@@ -59,9 +40,8 @@ export class AddMaterielComponent implements OnInit {
     private ramservice: RamService,
     private marqueservice: MarquesService,
     private infoservice: InformatiqueService,
-    public vf: ValidationFormsService) {
+    public vf: ValidationService) {
     this.formErrors = this.vf.errorMessages;
-
   }
   ngOnInit(): void {
     this.allservices();
@@ -71,10 +51,65 @@ export class AddMaterielComponent implements OnInit {
     this.allram();
     this.allsystemes();
     this.allapplication();
+    this.matForm = new FormGroup({
+      type: new FormControl(),
+      Marque: new FormControl(),
+      service: new FormControl(),
+      SerialNumber: new FormControl(),
+      owner: new FormControl(),
+      ram: new FormControl(),
+      systeme: new FormControl(),
+      domaine: new FormControl(),
+      application: new FormControl(),
+      situation: new FormControl(),
+      date: new FormControl(),
+      place: new FormControl(),
+      accept: new FormControl(false, Validators.requiredTrue)
+    });
+    this.id = this.activatetRoute.snapshot.params.id;
+    this.infoservice.getMinfo(this.id).subscribe((response: any) => {
+      this.matForm.patchValue(response)
+    },
+      (error) => {
+        console.log(error);
+      }
+    );
+    this.allservices()
   }
-
   get f() { return this.matForm.controls; }
 
+
+  updateMinfo() {
+
+    this.submitted = true;
+    if (this.matForm.invalid) {
+      return
+    }
+    //with services
+    this.infoservice.updateMinfo(this.id, this.matForm.value).subscribe((response) => {
+      this.router.navigate(['informatiques/listmateriels'])
+    },
+      (error) => {
+        console.log(error);
+      }
+    );
+
+  }
+
+  onReset() {
+
+    this.submitted = false;
+    this.matForm.reset();
+  }
+
+  onSubmit() {
+    this.submitted = true;
+    // stop here if form is invalid
+    if (this.matForm.invalid) {
+      return;
+    }
+  }
+  
   //get all services
   allservices() {
     this.serviceservice.allServices().subscribe((response: any) => {
@@ -140,14 +175,12 @@ export class AddMaterielComponent implements OnInit {
   findmarques() {
     this.marqueservice.findMarques(this.matForm.value.type).subscribe((response: any) => {
       this.myfindMarques = response
-
     },
       (error: any) => {
         console.log(error);
       }
     );
   }
-
   //get all owners
   allowners() {
     this.ownerservice.allowners().subscribe((response: any) => {
@@ -159,43 +192,4 @@ export class AddMaterielComponent implements OnInit {
     );
   }
 
-  addmatInfo() {
-    this.submitted = true;
-    if (this.matForm.invalid) {
-      return
-    };
-    //with Services
-    console.log(this.matForm.value.type);
-    if (this.matForm.value.type != "617851db5ff14e633aeff1e0") {
-      this.matForm.value.ram = null
-      this.matForm.value.systeme = null
-
-    }
-    const addowner = this.infoservice.addmatInfo(this.matForm.value).subscribe((response: any) => {
-      this.toasterService.pop('success', 'Success Login', response.message);
-      // this.affectService(this.matForm.value)
-      this.router.navigate(['/informatiques/listmateriels']);
-    },
-      (error: any) => {
-        this.toasterService.pop('error', 'Error', error.error.message);
-        console.log(error);
-      }
-    );
-  }
-
-  onReset() {
-
-    this.submitted = false;
-    this.matForm.reset();
-
-  }
-
-  onSubmit() {
-    this.submitted = true;
-    // stop here if form is invalid
-    if (this.matForm.invalid) {
-      return;
-    }
-
-  }
 }

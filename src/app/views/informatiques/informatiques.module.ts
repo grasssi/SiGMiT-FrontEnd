@@ -7,6 +7,8 @@ import { ListeMaterielComponent } from './components/liste-materiel/liste-materi
 import { SharedModule } from '../shared/shared.module';
 import { AddMaterielComponent } from './components/add-materiel/add-materiel.component';
 import { GlobalListComponent } from './components/global-list/global-list.component';
+import { ListParServiceComponent } from './components/list-par-service/list-par-service.component';
+import { UpdateMaterielComponent } from './components/update-materiel/update-materiel.component';
 
 
 @NgModule({
@@ -15,12 +17,14 @@ import { GlobalListComponent } from './components/global-list/global-list.compon
     ListeMaterielComponent,
     AddMaterielComponent,
     GlobalListComponent,
+    ListParServiceComponent,
+    UpdateMaterielComponent,
+
   ],
   imports: [
     CommonModule,
     InformatiquesRoutingModule,
-    SharedModule,
-
+    SharedModule
   ]
 })
 export class InformatiquesModule { }

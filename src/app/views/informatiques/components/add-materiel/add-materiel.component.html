@@ -1,8 +1,15 @@
+<head>
+  <title>ng-bootstrap datepicker demo - popup</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.22.0/themes/prism.css" />
+
+</head>
+
 <div class="animated fadeIn ">
   <div class="row">
     <div class="col-md-12">
       <div class="card">
-        <div class="card-header"  style="text-align: center"  >
+        <div class="card-header" style="text-align: center">
           <i class="icon-note"></i> Form Validation
           <a class="badge badge-danger" href="https://coreui.io/pro/">CoreUI Pro Component</a>
           <div class="card-header-actions">
@@ -11,13 +18,13 @@
             </a>
           </div>
         </div>
-        <div class="card-body" style="text-align: center"  dir="auto" >إضافة عتاد إعلامية 
+        <div class="card-body" style="text-align: center" dir="auto">إضافة عتاد إعلامية
           <hr>
-          <div class="row" >
-            <div class="col-md-6"  style="text-align: right"  dir="rtl" >
+          <div class="row">
+            <div class="col-md-6" style="text-align: right" dir="rtl">
               <form [formGroup]="matForm" novalidate (ngSubmit)="onSubmit()" class="needs-validation">
                 <div class="form-group">
-                  <label class="col-form-label " for="type"  dir="rtl"> العتاد</label>
+                  <label class="col-form-label " for="type" dir="rtl"> العتاد</label>
                   <select (change)="findmarques()" ng-model="selectedItem" class="form-control" placeholder="العتاد"
                     autocomplete="العتاد" formControlName="type" required
                     [ngClass]="{ 'is-invalid': submitted && f.type.errors, 'is-valid': f.type.touched && !f.type.errors }">
@@ -28,8 +35,8 @@
                     <div *ngIf="f['type'].errors.required">Last Name is required</div>
                   </div>
                 </div>
-                <div class="form-group"  >
-                  <label class="col-form-label" for="Marque" >نوع العتاد</label>
+                <div class="form-group">
+                  <label class="col-form-label" for="Marque">نوع العتاد</label>
                   <select ng-model="selectedItem" class="form-control" placeholder="نوع العتاد"
                     autocomplete="نوع العتاد" formControlName="Marque" required
                     [ngClass]="{ 'is-invalid': submitted && f.Marque.errors, 'is-valid': f.Marque.touched && !f.Marque.errors }">
@@ -81,16 +88,44 @@
                   <select ng-model="selectedItem" class="form-control" placeholder="الوضعية" autocomplete="الوضعية"
                     formControlName="situation" required
                     [ngClass]="{ 'is-invalid': submitted && f.situation.errors, 'is-valid': f.situation.touched && !f.domaine.errors }">
-                    <option value="Operational">عملياتي </option>
-                    <option value="stock">مخزون</option>
+                    <option value="Operationnel">مستعمل</option>
+                    <option value="StockOperationnel">مخزون عملياتي</option>
+                    <option value="StockNonOperationnel"> مخزون غير علياتي </option>
+                    <option value="reforme">في إنتضار الإحالة على الصرف </option>
                     <option value="repair"> التصليح</option>
-                    <option value="non operative"> غير عملياتي</option>
                   </select>
                   <div *ngIf="submitted && f['situation'].errors" class="invalid-feedback">
                     <div *ngIf="f['situation'].errors.required">situation is required</div>
                   </div>
                 </div>
-                <div *ngIf="matForm.value.situation =='Operational'">
+                <div *ngIf="matForm.value.situation =='repair'">
+                  <div class="form-group">
+                    <label class="col-form-label" for="date"> تاريخ الإيداع</label>
+
+                    <div class="form-group">
+                      <div class="input-group">
+                        <input class="form-control" placeholder="yyyy-mm-dd" type="date" name="dp"
+                          formControlName="date" ngbDatepicker>
+                        <!-- <div class="input-group-append">
+                            <button class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button"></button>
+                          </div> -->
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label class="col-form-label" for="المكان">المكان</label>
+                      <select ng-model="selectedItem" class="form-control" placeholder="المكان" autocomplete="المكان"
+                        formControlName="place" required
+                        [ngClass]="{ 'is-invalid': submitted && f.situation.errors, 'is-valid': f.situation.touched && !f.domaine.errors }">
+                        <option value="إ ع إشر إ">إ ع إشر إ</option>
+                      </select>
+                      <div *ngIf="submitted && f['SerialNumber'].errors" class="invalid-feedback">
+                        <div *ngIf="f['SerialNumber'].errors.required">SerialNumber is required</div>
+                        <div *ngIf="f['SerialNumber'].errors.SerialNumber">{{formErrors.SerialNumber}}</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div *ngIf="matForm.value.situation =='Operationnel'">
                   <div class="form-group">
                     <label class="col-form-label" for="service">المصلحة</label>
                     <select ng-model="selectedItem" class="form-control" placeholder="service" autocomplete="service"

@@ -11,5 +11,14 @@ export class AddApplicationComponent implements OnInit {
 
   ngOnInit(): void {
   }
+  public visible = false;
 
+  toggleLiveDemo() {
+    this.visible = !this.visible;
+  }
+
+  handleLiveDemoChange(event: any) {
+    this.visible = event;
+  }
 }
+

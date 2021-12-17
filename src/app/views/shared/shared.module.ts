@@ -9,6 +9,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { SharedRoutingModule } from './shared-routing.module';
 import { SelectModule } from 'ng-select';
 import { EmptyPipe } from '../../pipes/empty.pipe';
+import { NgbDatepickerModule } from '@ng-bootstrap/ng-bootstrap';
+import { ChartsModule } from 'ng2-charts';
 
 
 @NgModule({
@@ -23,7 +25,9 @@ import { EmptyPipe } from '../../pipes/empty.pipe';
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
+    //NgbDatepickerModule,
     SelectModule,
+    ChartsModule
     
     
   ],
@@ -34,7 +38,8 @@ import { EmptyPipe } from '../../pipes/empty.pipe';
     ReactiveFormsModule,
     DataFilterPipe,
     SelectModule,
-    EmptyPipe
+    EmptyPipe,
+    ChartsModule
   ]
 })
 export class SharedModule { }

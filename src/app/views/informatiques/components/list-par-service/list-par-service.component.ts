@@ -2,12 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { InformatiqueService, TableData } from '../../../../services/informatique.service';
 
 @Component({
-  selector: 'app-global-list',
-  templateUrl: './global-list.component.html',
-  styleUrls: ['./global-list.component.css']
+  selector: 'app-list-par-service',
+  templateUrl: './list-par-service.component.html',
+  styleUrls: ['./list-par-service.component.css']
 })
-export class GlobalListComponent implements OnInit {
-
+export class ListParServiceComponent implements OnInit {
   public barChartLabels: string[]
   public barChartType = 'bar';
   public barChartLegend = true;
@@ -17,16 +16,15 @@ export class GlobalListComponent implements OnInit {
   chartReady = false
   error: any;
   public data: TableData;
-  chart = [];
   constructor(private appService: InformatiqueService) { }
 
   ngOnInit(): void {
-    const res = this.appService.globalList().subscribe(
+    const res = this.appService.listparservice().subscribe(
       (data: TableData) => {
         setTimeout(() => {
           this.data = [...data];
         }, 1000);
-        console.log('res', res);
+         console.log('res',res);
       }, // success path
 
       error => this.error = error // error path
@@ -82,27 +80,4 @@ export class GlobalListComponent implements OnInit {
       }
     );
   }
-  // public barChartOptions: any = {
-  //   scaleShowVerticalLines: false,
-  //   responsive: true
-  // };
-
-  // public barChartLabels: string[] = ['2006', '2007', '2008', '2009', '2010', '2011', '2012'];
-  // public barChartType = 'bar';
-  // public barChartLegend = true;
-
-  // public barChartData: any[] = [
-  //   { data: [65, 59, 80, 81, 56, 55, 40], label: 'Series A' },
-  //   { data: [28, 48, 40, 19, 86, 27, 90], label: 'Series B' }
-  // ];
-
-  // events
-  public chartClicked(e: any): void {
-    console.log(e);
-  }
-
-  public chartHovered(e: any): void {
-    console.log(e);
-  }
 }
-

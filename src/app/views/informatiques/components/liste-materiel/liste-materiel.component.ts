@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { InformatiqueService, TableData } from '../../../../services/informatique.service';
+
 @Component({
   selector: 'app-liste-materiel',
   templateUrl: './liste-materiel.component.html',
