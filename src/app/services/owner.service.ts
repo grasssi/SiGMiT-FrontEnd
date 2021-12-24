@@ -59,7 +59,6 @@ export class OwnerService {
 
   updateowner(id: any, body: any) {
     return this.httpClient.put(`${this.baseUrl}/updateowner/${id}`, body)
-
   }
 
   addowner(body: any) {

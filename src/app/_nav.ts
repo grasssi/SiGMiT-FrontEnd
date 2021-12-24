@@ -155,6 +155,44 @@ export const navItems: NavData[] = [
         },
       ]
     },
+    {
+      title: true,
+      name: 'مستهلكات'
+    },
+    {
+    name: 'مستهلكات إعلامية',
+      url: '/consinfo',
+      icon: 'icon-drop',
+      children: [
+        {
+          name: 'قائمة شاملة',
+          url: '/consinfo/listcons',
+          icon: 'icon-puzzle'
+        },
+        {
+          name: 'إضافة مصالح أو وحدات',
+          url: '/services/addservice',
+          icon: 'icon-puzzle'
+        },
+      ]
+    },
+    {
+      name: 'مستهلكات إشارة',
+        url: '/constrans',
+        icon: 'icon-drop',
+        children: [
+          {
+            name: 'قائمة شاملة',
+            url: '/constrans/listcons',
+            icon: 'icon-puzzle'
+          },
+          {
+            name: 'إضافة مصالح أو وحدات',
+            url: '/services/addservice',
+            icon: 'icon-puzzle'
+          },
+        ]
+      },
   {
     name: 'Typography',
     url: '/theme/typography',
