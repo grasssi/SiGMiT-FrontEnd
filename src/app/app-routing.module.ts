@@ -121,6 +121,14 @@ export const routes: Routes = [
         path: 'applications',
         loadChildren: () => import('./views/applications/applications.module').then(m => m.ApplicationsModule)
       },
+      {
+        path: 'consommables',
+        loadChildren: () => import('./views/consommables/consommables.module').then(m => m.ConsommablesModule)
+      },
+      {
+        path: 'consinfo',
+        loadChildren: () => import('./views/consinfo/consinfo.module').then(m => m.ConsinfoModule)
+      },
     ]
   },
   { path: '**', component: P404Component }
