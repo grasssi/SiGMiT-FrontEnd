@@ -20,6 +20,10 @@ import { SharedModule } from '../shared/shared.module';
     CommonModule,
     MarquesRoutingModule,
     SharedModule
-  ]
+  ],
+  exports: [
+    AddMarqueComponent// <== export the component you want to use in another module
+  ] 
+
 })
 export class MarquesModule { }

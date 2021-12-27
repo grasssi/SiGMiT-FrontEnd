@@ -7,6 +7,7 @@ import { UpdateTypeComponent } from './components/update-type/update-type.compon
 import { AddTypeComponent } from './components/add-type/add-type.component';
 import { ListTypesComponent } from './components/list-types/list-types.component';
 import { SharedModule } from '../shared/shared.module';
+// import { AddMarqueComponent } from '../marques/components/add-marque/add-marque.component';
 
 
 @NgModule({
@@ -14,12 +15,17 @@ import { SharedModule } from '../shared/shared.module';
     TypesComponent,
     UpdateTypeComponent,
     AddTypeComponent,
-    ListTypesComponent
+    ListTypesComponent,
+    // AddMarqueComponent
+
   ],
   imports: [
     CommonModule,
     TypesRoutingModule,
     SharedModule,
-  ]
+  ],
+  // exports: [
+  //   AddMarqueComponent
+  // ]
 })
 export class TypesModule { }

@@ -18,7 +18,7 @@ export class AddTypeComponent implements OnInit {
   formErrors: any;
   myRes: any;
   myName: any;
-  myMarques:any
+  myMarques: any
 
   typeForm = new FormGroup({
     type: new FormControl(),
@@ -29,12 +29,12 @@ export class AddTypeComponent implements OnInit {
   constructor(private toasterService: ToasterService,
     private router: Router,
     private typeservice: TypesService,
-    private marqueservice:MarquesService,
+    private marqueservice: MarquesService,
     public vf: ValidationFormsService) {
     this.formErrors = this.vf.errorMessages;
   }
-  ngOnInit(): void { 
-this.allmarques();
+  ngOnInit(): void {
+    this.allmarques();
   }
   get f() { return this.typeForm.controls; }
 
