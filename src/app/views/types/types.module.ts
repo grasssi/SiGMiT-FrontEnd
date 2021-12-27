@@ -6,6 +6,7 @@ import { TypesComponent } from './types.component';
 import { UpdateTypeComponent } from './components/update-type/update-type.component';
 import { AddTypeComponent } from './components/add-type/add-type.component';
 import { ListTypesComponent } from './components/list-types/list-types.component';
+import { SharedModule } from '../shared/shared.module';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { ListTypesComponent } from './components/list-types/list-types.component
   ],
   imports: [
     CommonModule,
-    TypesRoutingModule
+    TypesRoutingModule,
+    SharedModule,
   ]
 })
 export class TypesModule { }
