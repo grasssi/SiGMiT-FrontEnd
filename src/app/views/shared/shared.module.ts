@@ -11,12 +11,13 @@ import { SelectModule } from 'ng-select';
 import { EmptyPipe } from '../../pipes/empty.pipe';
 import { NgbDatepickerModule } from '@ng-bootstrap/ng-bootstrap';
 import { ChartsModule } from 'ng2-charts';
+import { ModalModule } from 'ngx-bootstrap/modal';
 
 
 @NgModule({
   declarations: [
     DataFilterPipe,
-    EmptyPipe
+    EmptyPipe,
   ],
   imports: [
     CommonModule,
@@ -27,11 +28,10 @@ import { ChartsModule } from 'ng2-charts';
     ReactiveFormsModule,
     //NgbDatepickerModule,
     SelectModule,
-    ChartsModule
-    
-    
+    ChartsModule,
+    ModalModule.forRoot()
   ],
-  exports:[
+  exports: [
     DataTableModule,
     FormsModule,
     HttpClientModule,
@@ -39,7 +39,8 @@ import { ChartsModule } from 'ng2-charts';
     DataFilterPipe,
     SelectModule,
     EmptyPipe,
-    ChartsModule
+    ChartsModule,
+    ModalModule
   ]
 })
 export class SharedModule { }
