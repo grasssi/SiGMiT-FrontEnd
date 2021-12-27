@@ -15,7 +15,7 @@ const routes: Routes = [
  { path: 'listcons',
   component: ListConsComponent 
  },
- { path: 'updatecons',
+ { path: 'updatecons/:id',
   component: UpdateConsComponent 
  }
 ];

@@ -131,6 +131,7 @@ export const routes: Routes = [
       },
     ]
   },
+  { path: 'types', loadChildren: () => import('./views/types/types.module').then(m => m.TypesModule) },
   { path: '**', component: P404Component }
 ];
 

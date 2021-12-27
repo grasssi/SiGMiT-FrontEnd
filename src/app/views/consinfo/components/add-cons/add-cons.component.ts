@@ -14,34 +14,56 @@ export class AddConsComponent implements OnInit {
   submitted = false;
   formErrors: any;
   myRes: any;
-  myName: any; 
+  myName: any;
 
-  consominforeqForm = new FormGroup({
-    refreq: new FormControl(),
-    datereq: new FormControl(),
-    nom: new FormControl(),
-    qtreq: new FormControl(),
-    forwho: new FormControl(),
-    functions: new FormControl(),
-    refdti: new FormControl(),
-    datedti: new FormControl(),
-    qtdti: new FormControl(),
-    refemaa: new FormControl(),
-    dateemaa: new FormControl(),
-    qtemaa: new FormControl(),
-    refdgti: new FormControl(),
-    datedgti: new FormControl(),
-    qtdgti: new FormControl(),
+  consominfoForm = new FormGroup({
+    nomCons: new FormControl(),
+    nomimp: new FormControl(),
     accept: new FormControl(false, Validators.requiredTrue)
   });
 
   constructor(private toasterService: ToasterService,
     private router: Router,
     private consinfo: ConsinfoService,
-
     public vf: ValidationFormsService) {
     this.formErrors = this.vf.errorMessages;
+  }
+  ngOnInit(): void { }
+  get f() { return this.consominfoForm.controls; }
+
+  addconsinfo() {
+    this.submitted = true;
+    if (this.consominfoForm.invalid) {
+      return
+    };
+    //with Services
+    const addcons = this.consinfo.addcons(this.consominfoForm.value).subscribe((response: any) => {
+      this.toasterService.pop('success', 'Success Login', response.message);
+      // this.affectService(this.ownerForm.value)
+      this.router.navigate(['/consinfo']);
+    },
+      (error: any) => {
+        this.toasterService.pop('error', 'Error', error.error.message);
+        console.log(error);
+      }
+    );
+  }
+
+
+  onReset() {
+
+    this.submitted = false;
+    this.consominfoForm.reset();
 
   }
-  ngOnInit(): void {}
- }
+
+  onSubmit() {
+    this.submitted = true;
+    // stop here if form is invalid
+    if (this.consominfoForm.invalid) {
+      return;
+    }
+
+  }
+}
+
