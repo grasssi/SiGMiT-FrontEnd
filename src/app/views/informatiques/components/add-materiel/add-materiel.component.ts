@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 import { ToasterService } from 'angular2-toaster';
 import { ApplicationService } from '../../../../services/application.service';
+import { ConsinfoService } from '../../../../services/consinfo.service';
 import { InformatiqueService } from '../../../../services/informatique.service';
 import { MarquesService } from '../../../../services/marques.service';
 import { OwnerService } from '../../../../services/owner.service';
@@ -28,6 +29,7 @@ export class AddMaterielComponent implements OnInit {
   myMarques: any;
   myApps: any;
   myRam: any;
+  myfindtypecons:any;
   mySysteme: any;
   myfindMarques: any;
   myOwners: any;
@@ -46,6 +48,7 @@ export class AddMaterielComponent implements OnInit {
     situation: new FormControl(),
     date: new FormControl(),
     place: new FormControl(),
+    typecons:new FormControl(),
     accept: new FormControl(false, Validators.requiredTrue)
   });
 
@@ -59,6 +62,7 @@ export class AddMaterielComponent implements OnInit {
     private ramservice: RamService,
     private marqueservice: MarquesService,
     private infoservice: InformatiqueService,
+    private consinfoservice: ConsinfoService,
     public vf: ValidationFormsService) {
     this.formErrors = this.vf.errorMessages;
 
@@ -71,6 +75,7 @@ export class AddMaterielComponent implements OnInit {
     this.allram();
     this.allsystemes();
     this.allapplication();
+    this.allconsInfo()
   }
 
   get f() { return this.matForm.controls; }
@@ -152,6 +157,18 @@ export class AddMaterielComponent implements OnInit {
   allowners() {
     this.ownerservice.allowners().subscribe((response: any) => {
       this.myOwners = response
+    },
+      (error: any) => {
+        console.log(error);
+      }
+    );
+  }
+
+  allconsInfo() {
+    this.consinfoservice.allconsinfo().subscribe((response: any) => {
+      this.myfindtypecons = response
+      console.log('grassi',this.myfindtypecons);
+      
     },
       (error: any) => {
         console.log(error);

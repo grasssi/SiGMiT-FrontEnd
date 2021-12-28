@@ -129,6 +129,14 @@ export const routes: Routes = [
         path: 'consinfo',
         loadChildren: () => import('./views/consinfo/consinfo.module').then(m => m.ConsinfoModule)
       },
+      {
+        path: 'types',
+        loadChildren: () => import('./views/types/types.module').then(m => m.TypesModule)
+      },
+      {
+        path: 'marques',
+        loadChildren: () => import('./views/marques/marques.module').then(m => m.MarquesModule)
+      },
     ]
   },
   { path: '**', component: P404Component }

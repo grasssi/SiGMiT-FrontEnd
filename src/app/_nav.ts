@@ -170,8 +170,8 @@ export const navItems: NavData[] = [
           icon: 'icon-puzzle'
         },
         {
-          name: 'إضافة مصالح أو وحدات',
-          url: '/services/addservice',
+          name: 'إضافة مستهلكات',
+          url: '/consinfo/addcons',
           icon: 'icon-puzzle'
         },
       ]

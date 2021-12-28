@@ -9,14 +9,16 @@ import { HttpClientModule } from '@angular/common/http';
 import { SharedRoutingModule } from './shared-routing.module';
 import { SelectModule } from 'ng-select';
 import { EmptyPipe } from '../../pipes/empty.pipe';
-import { NgbDatepickerModule } from '@ng-bootstrap/ng-bootstrap';
 import { ChartsModule } from 'ng2-charts';
+import { ModalModule } from 'ngx-bootstrap/modal';
+import { AddMarqueComponent } from '../marques/components/add-marque/add-marque.component';
 
 
 @NgModule({
   declarations: [
     DataFilterPipe,
-    EmptyPipe
+    EmptyPipe,
+    AddMarqueComponent
   ],
   imports: [
     CommonModule,
@@ -25,13 +27,11 @@ import { ChartsModule } from 'ng2-charts';
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
-    //NgbDatepickerModule,
     SelectModule,
-    ChartsModule
-    
-    
+    ChartsModule,
+    ModalModule.forRoot()
   ],
-  exports:[
+  exports: [
     DataTableModule,
     FormsModule,
     HttpClientModule,
@@ -39,7 +39,9 @@ import { ChartsModule } from 'ng2-charts';
     DataFilterPipe,
     SelectModule,
     EmptyPipe,
-    ChartsModule
+    ChartsModule,
+    ModalModule,
+    AddMarqueComponent
   ]
 })
 export class SharedModule { }

@@ -12,6 +12,7 @@ export class TypesService {
   baseUrl = environment.baseUrl;
 
   constructor(private httpClient: HttpClient) { }
+
   alltypes() {
     return this.httpClient.get<TableData>(`${this.baseUrl}/alltypes`).pipe(
       retry(3), // retry a failed request up to 3 times
@@ -35,14 +36,18 @@ export class TypesService {
   }
 
   removetype(id: any) {
-    return this.httpClient.delete(`${this.baseUrl}/removeuser/${id}`)
+    return this.httpClient.delete(`${this.baseUrl}/removetype/${id}`)
   }
   gettype(id: any) {
-    return this.httpClient.get(`${this.baseUrl}/getuser/${id}`)
+    return this.httpClient.get(`${this.baseUrl}/gettype/${id}`)
   }
 
   updatetype(id: any, body: any) {
-    return this.httpClient.put(`${this.baseUrl}/updateuser/${id}`, body)
+    return this.httpClient.put(`${this.baseUrl}/updatetype/${id}`, body)
+  }
+  addtype(body: any) {
+    return this.httpClient.post(`${this.baseUrl}/addtype`, body)
 
   }
+
 }

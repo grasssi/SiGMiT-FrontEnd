@@ -29,7 +29,8 @@ export class ValidationService {
     ram:'',
     systeme:'',
     application:'',
-    situation:''
+    situation:'',
+    nomCons:''
 
   };
 
@@ -87,7 +88,10 @@ export class ValidationService {
       },
       situation:{
         required:'situation is required '
+      },
+      nomCons:{
+        required:'nomCons is required '
       }
-    };
+        };
   }
 }

@@ -36,15 +36,33 @@
                   </div>
                 </div>
                 <div class="form-group">
-                  <label class="col-form-label" for="Marque">نوع العتاد</label>
-                  <select ng-model="selectedItem" class="form-control" placeholder="نوع العتاد"
-                    autocomplete="نوع العتاد" formControlName="Marque" required
-                    [ngClass]="{ 'is-invalid': submitted && f.Marque.errors, 'is-valid': f.Marque.touched && !f.Marque.errors }">
-                    <option *ngFor="let marque of myfindMarques" value="{{marque._id}}">{{marque.marque}}</option>
-                  </select>
+                  <div class="row">
+                    <div class="col">
+                      <label class="col-form-label" for="Marque">نوع العتاد</label>
+                      <select ng-model="selectedItem" class="form-control" placeholder="نوع العتاد"
+                        autocomplete="نوع العتاد" formControlName="Marque" required
+                        [ngClass]="{ 'is-invalid': submitted && f.Marque.errors, 'is-valid': f.Marque.touched && !f.Marque.errors }">
+                        <option *ngFor="let marque of myfindMarques" value="{{marque._id}}">{{marque.marque}}</option>
+                      </select>
 
-                  <div *ngIf="submitted && f['Marque'].errors" class="invalid-feedback">
+                      <div *ngIf="submitted && f['Marque'].errors" class="invalid-feedback">
+                        <div *ngIf="f['Marque'].errors.required">First Name is required</div>
+                      </div>
+                    </div>
+                    <div *ngIf="matForm.value.type=='617851aa5ff14e633aeff1d4'">
+                    <div class="col">
+                      <label class="col-form-label" for="typecons">نوع المستهلكات</label>
+                      <select ng-model="selectedItem" class="form-control" placeholder="نوع المستهلكات"
+                        autocomplete="نوع المستهلكات" formControlName="typecons" required
+                        [ngClass]="{ 'is-invalid': submitted && f.typecons.errors, 'is-valid': f.typecons.touched && !f.typecons.errors }">
+                        <option *ngFor="let typecons of myfindtypecons" value="{{typecons._id}}">{{typecons.nomCons}}</option>
+                      </select>
+
+                      <!-- <div *ngIf="submitted && f['Marque'].errors" class="invalid-feedback">
                     <div *ngIf="f['Marque'].errors.required">First Name is required</div>
+                  </div> -->
+                    </div>
+                    </div>
                   </div>
                 </div>
                 <div *ngIf="matForm.value.type=='617851db5ff14e633aeff1e0'">

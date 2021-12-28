@@ -57,4 +57,7 @@ export class MarquesService {
   affectType(body: any) {
     return this.httpClient.put(`${this.baseUrl}/affecttype/${body.marque}/${body._id}`, body)
   }
+  addMarque(body: any) {
+    return this.httpClient.post(`${this.baseUrl}/addmarque`, body)
+  }
 }

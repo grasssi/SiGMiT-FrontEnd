@@ -18,22 +18,22 @@
                         </a>
                     </div>
                 </div>
-                <div class="card-body" style="text-align: center" dir="auto">إضافة مستهلكات إعلامية
+                <div class="card-body" style="text-align: center" dir="auto">إضافة نوع عتاد
                     <hr>
                     <div class="row">
                         <div class="col-md-6" style="text-align: right" dir="rtl">
-                            <form [formGroup]="consominfoForm" novalidate (ngSubmit)="onSubmit()"
-                                class="needs-validation">
+                            <form [formGroup]="marqueForm" novalidate (ngSubmit)="onSubmit()" class="needs-validation">
+                                <!-- Marques -->
                                 <div class="form-group">
-                                    <label class="col-form-label" for="nomCons">مستهلكات</label>
-                                    <input class="form-control" id="nomCons" type="text" formControlName="nomCons"
-                                        placeholder="مستهلكات" autocomplete="الإسم" required autofocus
-                                        [ngClass]="{ 'is-invalid': submitted && f.nomCons.errors, 'is-valid': f.nomCons.touched && !f.nomCons.errors }" />
-                                    <div *ngIf="submitted && f['nomCons'].errors" class="invalid-feedback">
-                                        <div *ngIf="f['nomCons'].errors.required">First Name is required</div>
+                                    <label class="col-form-label" for="marque">نوع العتاد</label>
+                                    <input class="form-control" id="marque" type="text" formControlName="marque"
+                                        placeholder="نوع العتاد" autocomplete="الإسم" required autofocus
+                                        [ngClass]="{ 'is-invalid': submitted && f.marque.errors, 'is-valid': f.marque.touched && !f.marque.errors }" />
+                                    <div *ngIf="submitted && f['marque'].errors" class="invalid-feedback">
+                                        <div *ngIf="f['marque'].errors.required">First Name is required</div>
                                     </div>
                                 </div>
-                                <div class="form-group">
+                                <!-- <div class="form-group">
                                     <div class="custom-control custom-checkbox">
                                         <input type="checkbox" class="custom-control-input" id="accept"
                                             formControlName="accept" required
@@ -45,15 +45,13 @@
                                                 Conditions</div>
                                         </div>
                                     </div>
-                                </div>
+                                </div> -->
                                 <div class="form-group">
-                                    <button class="btn btn-primary mr-1" (click)="addconsinfo()"
-                                        [disabled]="consominfoForm.pristine || consominfoForm.invalid">Submit</button>
+                                    <button class="btn btn-primary mr-1" (click)="addmarque()">Submit</button>
                                     <button class="btn btn-success mr-1" type="submit"
-                                        [disabled]="consominfoForm.valid">Validate</button>
+                                        [disabled]="marqueForm.valid">Validate</button>
                                     <button class="btn btn-danger" type="reset"
-                                        [disabled]="consominfoForm.pristine && !submitted"
-                                        (click)="onReset()">Reset</button>
+                                        [disabled]="marqueForm.pristine && !submitted" (click)="onReset()">Reset</button>
                                 </div>
                             </form>
                         </div>

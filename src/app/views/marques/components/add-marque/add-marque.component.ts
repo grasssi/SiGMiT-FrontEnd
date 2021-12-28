@@ -2,45 +2,48 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToasterService } from 'angular2-toaster';
-import { ConsinfoService } from '../../../../services/consinfo.service';
+import { MarquesService } from '../../../../services/marques.service';
 import { ValidationFormsService } from '../../../forms/validation-forms/validation-forms.service';
 
 @Component({
-  selector: 'app-add-cons',
-  templateUrl: './add-cons.component.html',
-  styleUrls: ['./add-cons.component.css']
+  selector: 'app-add-marque',
+  templateUrl: './add-marque.component.html',
+  styleUrls: ['./add-marque.component.css']
 })
-export class AddConsComponent implements OnInit {
+export class AddMarqueComponent implements OnInit {
   submitted = false;
   formErrors: any;
   myRes: any;
   myName: any;
+  myMarques:any
 
-  consominfoForm = new FormGroup({
-    nomCons: new FormControl(),
-    nomimp: new FormControl(),
-    accept: new FormControl(false, Validators.requiredTrue)
+  marqueForm = new FormGroup({
+    type: new FormControl(),
+    marque: new FormControl(),
+    //accept: new FormControl(false, Validators.requiredTrue)
   });
 
   constructor(private toasterService: ToasterService,
     private router: Router,
-    private consinfo: ConsinfoService,
+    private marqueservice:MarquesService,
     public vf: ValidationFormsService) {
     this.formErrors = this.vf.errorMessages;
   }
-  ngOnInit(): void { }
-  get f() { return this.consominfoForm.controls; }
+  ngOnInit(): void { 
+this.allmarques();
+  }
+  get f() { return this.marqueForm.controls; }
 
-  addconsinfo() {
+  addmarque() {
     this.submitted = true;
-    if (this.consominfoForm.invalid) {
+    if (this.marqueForm.invalid) {
       return
     };
     //with Services
-    const addcons = this.consinfo.addcons(this.consominfoForm.value).subscribe((response: any) => {
+    const addmarque = this.marqueservice.addMarque(this.marqueForm.value).subscribe((response: any) => {
       this.toasterService.pop('success', 'Success Login', response.message);
       // this.affectService(this.ownerForm.value)
-      this.router.navigate(['/consinfo']);
+      this.router.navigate(['/marques']);
     },
       (error: any) => {
         this.toasterService.pop('error', 'Error', error.error.message);
@@ -48,22 +51,29 @@ export class AddConsComponent implements OnInit {
       }
     );
   }
-
+  allmarques() {
+    this.marqueservice.allmarques().subscribe((response: any) => {
+      this.myMarques = response
+    },
+      (error: any) => {
+        console.log(error);
+      }
+    );
+  }
 
   onReset() {
 
     this.submitted = false;
-    this.consominfoForm.reset();
+    this.marqueForm.reset();
 
   }
 
   onSubmit() {
     this.submitted = true;
     // stop here if form is invalid
-    if (this.consominfoForm.invalid) {
+    if (this.marqueForm.invalid) {
       return;
     }
 
   }
 }
-

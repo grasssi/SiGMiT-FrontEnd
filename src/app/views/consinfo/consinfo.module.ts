@@ -6,6 +6,7 @@ import { ConsinfoComponent } from './consinfo.component';
 import { AddConsComponent } from './components/add-cons/add-cons.component';
 import { UpdateConsComponent } from './components/update-cons/update-cons.component';
 import { ListConsComponent } from './components/list-cons/list-cons.component';
+import { SharedModule } from '../shared/shared.module';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { ListConsComponent } from './components/list-cons/list-cons.component';
   ],
   imports: [
     CommonModule,
-    ConsinfoRoutingModule
+    ConsinfoRoutingModule,
+    SharedModule
   ]
 })
 export class ConsinfoModule { }
