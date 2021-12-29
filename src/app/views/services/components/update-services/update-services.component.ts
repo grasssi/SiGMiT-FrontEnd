@@ -59,7 +59,7 @@ export class UpdateServicesComponent implements OnInit {
   ownersbyservice(body) {
     console.log('body',body);
     
-    this.ownerService.ownersbyservice(body).subscribe((response: any) => {
+    this.ownerService.ownersbyservice(this.activatetRoute.snapshot.params.id,body).subscribe((response: any) => {
       this.myRes = response
       console.log('grassi',response);
       
