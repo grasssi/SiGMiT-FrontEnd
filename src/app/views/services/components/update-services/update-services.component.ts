@@ -25,13 +25,12 @@ export class UpdateServicesComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    
     this.serviceForm = new FormGroup({
       nomService: new FormControl('', [Validators.required]),
       owner: new FormControl('', [Validators.required]),
-
       accept: new FormControl(false, Validators.requiredTrue)
     });
-
 
     this.id = this.activatetRoute.snapshot.params.id;
     this.service.getservice(this.id).subscribe((response: any) => {
@@ -41,7 +40,9 @@ export class UpdateServicesComponent implements OnInit {
         console.log(error);
       }
     );
-    this.owners();
+    // this.owners();
+    this.ownersbyservice(this.id);
+
   }
   get f() { return this.serviceForm.controls; }
 
@@ -55,6 +56,19 @@ export class UpdateServicesComponent implements OnInit {
     );
   }
 
+  ownersbyservice(body) {
+    console.log('body',body);
+    
+    this.ownerService.ownersbyservice(body).subscribe((response: any) => {
+      this.myRes = response
+      console.log('grassi',response);
+      
+    },
+      (error: any) => {
+        console.log(error);
+      }
+    );
+  }
 
   updateservice() {
 
