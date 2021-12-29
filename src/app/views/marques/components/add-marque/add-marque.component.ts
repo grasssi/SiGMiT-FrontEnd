@@ -43,7 +43,8 @@ this.allmarques();
     const addmarque = this.marqueservice.addMarque(this.marqueForm.value).subscribe((response: any) => {
       this.toasterService.pop('success', 'Success Login', response.message);
       // this.affectService(this.ownerForm.value)
-      this.router.navigate(['/marques']);
+      // this.router.navigate(['/marques']);
+      this.router.navigate(['/types/addtype']);
     },
       (error: any) => {
         this.toasterService.pop('error', 'Error', error.error.message);

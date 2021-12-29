@@ -18,12 +18,11 @@
                         </a>
                     </div>
                 </div>
-                <div class="card-body" style="text-align: center" dir="auto">إضافة نوع عتاد 
+                <div class="card-body" style="text-align: center" dir="auto">إضافة نوع عتاد
                     <hr>
                     <div class="row">
                         <div class="col-md-6" style="text-align: right" dir="rtl">
-                            <form [formGroup]="typeForm" novalidate (ngSubmit)="onSubmit()"
-                                class="needs-validation">
+                            <form [formGroup]="typeForm" novalidate (ngSubmit)="onSubmit()" class="needs-validation">
                                 <!-- type -->
                                 <div class="form-group">
                                     <label class="col-form-label" for="type"> العتاد</label>
@@ -37,16 +36,17 @@
                                 <!-- Marques -->
                                 <div class="form-group">
                                     <label class="col-form-label" for="marque">نوع العتاد</label>
-                                    <select ng-model="selectedItem" class="form-control" placeholder="نوع العتاد" autocomplete="نوع العتاد"
-                                      formControlName="marque" required
-                                      [ngClass]="{ 'is-invalid': submitted && f.marque.errors, 'is-valid': f.marque.touched && !f.marque.errors }">
-                                      <option *ngFor="let marque of myMarques" value="{{marque._id}}">{{marque.marque}}</option>
+                                    <select ng-model="selectedItem" class="form-control" placeholder="نوع العتاد"
+                                        autocomplete="نوع العتاد" formControlName="marque" required
+                                        [ngClass]="{ 'is-invalid': submitted && f.marque.errors, 'is-valid': f.marque.touched && !f.marque.errors }">
+                                        <option *ngFor="let marque of myMarques" value="{{marque._id}}">
+                                            {{marque.marque}}</option>
                                     </select>
-                  
+
                                     <div *ngIf="submitted && f['marque'].errors" class="invalid-feedback">
-                                      <div *ngIf="f['marque'].errors.required">marque is required</div>
+                                        <div *ngIf="f['marque'].errors.required">marque is required</div>
                                     </div>
-                                  </div>
+                                </div>
                                 <div class="form-group">
                                     <div class="custom-control custom-checkbox">
                                         <input type="checkbox" class="custom-control-input" id="accept"
@@ -59,9 +59,10 @@
                                                 Conditions</div>
                                         </div>
                                     </div>
-                                    <button type="button" class="btn btn-info mr-1" data-toggle="modal" (click)="infoModal.show()">
+                                    <button type="button" class="btn btn-info mr-1" data-toggle="modal"
+                                        (click)="infoModal.show()">
                                         Info modal
-                                      </button>
+                                    </button>
                                 </div>
                                 <div class="form-group">
                                     <button class="btn btn-primary mr-1" (click)="addtype()"
@@ -69,8 +70,7 @@
                                     <button class="btn btn-success mr-1" type="submit"
                                         [disabled]="typeForm.valid">Validate</button>
                                     <button class="btn btn-danger" type="reset"
-                                        [disabled]="typeForm.pristine && !submitted"
-                                        (click)="onReset()">Reset</button>
+                                        [disabled]="typeForm.pristine && !submitted" (click)="onReset()">Reset</button>
                                 </div>
                             </form>
                         </div>
@@ -80,23 +80,24 @@
         </div>
     </div>
 </div>
-<div bsModal #infoModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div bsModal #infoModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+    aria-hidden="true">
     <div class="modal-dialog modal-info" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h4 class="modal-title">Modal title</h4>
-          <button type="button" class="close" (click)="infoModal.hide()" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-            <app-add-marque></app-add-marque>
->        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" (click)="infoModal.hide()">Close</button>
-          <button type="button" class="btn btn-info">Save changes</button>
-        </div>
-      </div><!-- /.modal-content -->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Modal title</h4>
+                <button type="button" class="close" (click)="infoModal.hide()" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <app-add-marque></app-add-marque>
+                >
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" (click)="infoModal.hide()">Close</button>
+                <button type="button" class="btn btn-info" [routerLink]="['/types/addtype']">Save changes</button>
+            </div>
+        </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
-  </div><!-- /.modal -->
-  
+</div><!-- /.modal -->

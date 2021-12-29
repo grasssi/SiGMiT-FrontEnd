@@ -67,4 +67,8 @@ export class OwnerService {
   affectService(body: any) {
     return this.httpClient.put(`${this.baseUrl}/affectService/${body.service}/${body._id}`, body)
   }
+  ownersbyservice(body: any) {
+    console.log(body);
+        return this.httpClient.get(`${this.baseUrl}/allownersbys/`, body)
+  }
 }
