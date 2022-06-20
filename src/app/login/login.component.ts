@@ -10,37 +10,41 @@ import { AuthserviceService } from '../services/authservice.service';
 })
 export class LoginComponent implements OnInit {
   submitted: boolean = false;
+  role; string
   loginForm = new FormGroup({
     email: new FormControl('', Validators.required),
     password: new FormControl(''),
 
   })
   constructor(private toasterService: ToasterService,
-     private authservice: AuthserviceService,
-      private router: Router) {
+    private authservice: AuthserviceService,
+    private router: Router) {
   }
 
   ngOnInit(): void {
-    }
-    login() {
+  }
+  login() {
     this.submitted = true;
-    if(this.loginForm.invalid)
-    {
+    if (this.loginForm.invalid) {
       return;
     }
-    this.authservice.login(this.loginForm.value).subscribe((response:any) => {
+    this.authservice.login(this.loginForm.value).subscribe((response: any) => {
       this.toasterService.pop('success', 'Success Login', response.message);
       localStorage.setItem('token', response.token)
+      role: response.role
+      console.log(response.role);
+
       this.router.navigate(['/dashboard']);
     },
-    (error: any) => {
-      console.log(error);
-      this.toasterService.pop('error', 'Error', error.error.message);
+      (error: any) => {
+        console.log(error);
+        this.toasterService.pop('error', 'Error', error.error.message);
       }
     );
   }
-  logout(){
+  logout() {
     localStorage.clear();
     this.router.navigate(['/login']);
   }
+
 }

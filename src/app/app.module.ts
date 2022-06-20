@@ -56,7 +56,8 @@ import { SharedModule } from './views/shared/shared.module';
     ReactiveFormsModule,
     FormsModule,
     ValidatorsModule,
-    SharedModule
+    SharedModule,
+    
   ],
   declarations: [
     AppComponent,
